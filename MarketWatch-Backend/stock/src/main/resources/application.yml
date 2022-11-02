@@ -1,0 +1,22 @@
+server:
+  port: 9004
+
+spring:
+  application:
+    name: stock-service
+  datasource:
+    DriverClassname: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/portfolio_watcher?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: ucantcme
+  jpa:
+    hibernate.ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+eureka:
+  client:
+    fetchRegistry: true
+  serviceUrl:
+    defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost

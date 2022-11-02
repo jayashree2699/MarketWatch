@@ -1,0 +1,69 @@
+zuul:
+  routes:
+    stock-setter-service:
+      path: /stock-setter-api/**
+      serviceId: stock-setter-service
+    miscellaneous-homepage-service:
+      path: /homepage-api/**
+      serviceId: miscellaneous-homepage-service
+    stock-service:
+      path: /stock-api/**
+      serviceId: stock-service
+    userutil-service:
+      path: /userutil-api/**
+      serviceId: userutil-service
+  ribbon:
+    ReadTimeout: 900000000000000000000000000
+    ConnectTimeout: 9000000000000000000000000000
+
+
+spring:
+  application:
+    name: LoginService
+  datasource:
+    url: jdbc:mysql://localhost:3306/portfolioWatcher?allowPublicKeyRetrieval=true&useSSL=false
+    username: hbstudent
+    password: hbstudent
+    jpa:
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL5Dialect
+
+eureka:
+  client:
+    fetchRegistry: true
+  serviceUrl:
+    defaultZone: http://localhost:8761/eureka/
+
+ribbon:
+  eureka:
+    enabled: true
+
+stock-setter-service:
+  ribbon:
+    listOfServers: localhost:9012
+
+miscellaneous-homepage-service:
+  ribbon:
+    listOfServers: localhost:9014
+
+stock-service:
+  ribbon:
+    listOfServers: localhost:9004
+
+userutil-service:
+  ribbon:
+    listOfServers: localhost:9002
+
+server:
+  port: 8081
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 9000000000000000000000000
