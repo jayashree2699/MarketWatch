@@ -1,0 +1,237 @@
+<script src="https://use.fontawesome.com/bd713ae2f3.js"></script>
+<app-header></app-header>
+<div class="container whole">
+  <div class="row">
+    <div class="col-xl-2 col-12">
+    </div>
+    <div class="box col-xl-10 col-12">
+      <div class="box-body">
+        <div class="d-md-flex justify-content-between align-items-center d-inline-block">
+          <div>
+
+            <h4 class="mb-0 text-fade font-size-12"><small>{{stock.name}}</small></h4>
+          </div>
+          <div>
+            <p class="mb-5 text-fade font-size-12">Live Price</p>
+            <h4 class="mb-0 text-fade font-size-12"><small>{{stock.instPrice}}</small></h4>
+          </div>
+          <div>
+            <p class="mb-5 text-fade font-size-12">Marcet Cap</p>
+            <h4 class="mb-0 text-fade font-size-12"><small>{{stock.marketCap}}</small></h4>
+          </div>
+          <div class="d-lg-block d-none">
+            <p class="mb-5 text-fade font-size-12">Volume</p>
+            <h4 class="mb-0 text-fade font-size-12"><small>{{stock.totalVolume}}</small></h4>
+          </div>
+          <div class="d-lg-block d-none">
+            <p class="mb-5 text-fade font-size-12">Low</p>
+            <h4 class="mb-0 text-fade font-size-12"><small>{{stock.todaysReport.low}}</small></h4>
+          </div>
+          <div class="d-lg-block d-none text-right">
+            <p class="mb-5 text-fade font-size-12">High</p>
+            <h4 class="mb-0 text-fade font-size-12"><small>{{stock.todaysReport.high}}</small></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-xl-2 col-12 mb-5">
+
+    </div>
+    <div class="col-xl-6 col-12 mb-5">
+      <div class="app-card app-card-chart h-100 shadow-sm">
+        <div class="app-card-header p-3">
+          <div class="row justify-content-between align-items-center">
+            <div class="col-auto">
+              <h4 class="app-card-title">{{stock.name}}</h4>
+            </div>
+            <!--//col-->
+            <div class="col-auto">
+              <div class="card-header-action">
+                <h4 class="app-card-title">Live Price: {{stock.instPrice}}</h4>
+              </div>
+              <!--//card-header-actions-->
+            </div>
+            <!--//col-->
+          </div>
+          <!--//row-->
+        </div>
+        <!--//app-card-header-->
+
+        <!-- <img style = "width: 650px; height: 550px" src="../../../assets/images/stockpreview.PNG"> -->
+        <div class="app-card-body p-3 p-lg-4">
+
+          <div class="chart-wrapper">
+            <canvas baseChart [datasets]="this.stock.chart.lineChartData" [labels]="this.stock.chart.lineChartLabels"
+              [options]="this.stock.chart.lineChartOptions" [colors]="this.stock.chart.lineChartColors"
+              [legend]="this.stock.chart.lineChartLegend" [chartType]="this.stock.chart.lineChartType"
+              [plugins]="this.stock.chart.lineChartPlugins">
+            </canvas>
+           <hr>
+          </div>
+          <div>
+            <p><b>SYMBOL:</b> {{stock.description.symbol}}<p>
+            <p><b>INDUSTRY:</b> {{stock.description.industry}}</p>
+            <p><b>ESG RATING:</b> {{stock.description.esg_rating}}</p>
+          </div>
+         
+        </div>
+        <div style="text-align: center;">
+          <button class="btn watch-btn w-100" id="addtofav" [disabled] = "isEnabled" (click) = "addtowatchlist($event)" style="background-color: #40d16b;color: white;">Add to Watchlist</button>
+        </div>
+      </div>
+    </div>
+    <div class="box transact col-xl-4 col-12 mb-5">
+      <div class="box-header with-border p-0">
+        <ul class="nav nav-tabs nav-fill das-tab" role="tablist">
+          <li class="nav-item"> <a class="nav-link active buybar" id="buy-tab" data-bs-toggle="tab" type="button"
+              data-bs-target="#tabid1" aria-controls="tabid1" aria-selected="true" role="tab">Buy</a> </li>
+          <li class="nav-item"> <a class="nav-link sellbar" id="sell-tab" data-bs-toggle="tab" type="button"
+              data-bs-target="#tabid2" aria-controls="tabid2" aria-selected="false" role="tab">Sell</a> </li>
+        </ul>
+      </div>
+      <div class="box-body">
+        <div class="tab-content">
+          <div class="tab-pane active" id="tabid1" aria-labelledby="buy-tab" role="tabpanel">
+            <form [formGroup]="buyForm" (ngSubmit)=buyFormSubmission(buyForm.value)>
+              <h4 class="box-title mb-15">Payment Method</h4>
+              <div class="row bb-1 pb-15 mb-15">
+                <div class="col-xxxl-4 col-md-6 col-12">
+                  <div class="sel-coin-type-outer">
+                    <input type="radio" name="pay-type" id="pay-1" checked="">
+                    <label for="pay-1" class="sel-coin-type">
+                      <i class="fas fa-wallet"></i>
+                      <p class="mb-5">Wallet</p>
+                      <p class="mb-0"><small>{{wallet.balance_amount}}</small></p>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-xxxl-4 col-md-6 col-12">
+                  <div class="sel-coin-type-outer">
+                    <input type="radio" name="pay-type" id="pay-2">
+                    <label for="pay-2" class="sel-coin-type">
+                      <i class="fas fa-bank"></i>
+                      <p class="mb-5">USA Bank</p>
+                      <p class="mb-0"><small>**** **** 8907</small></p>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <h4 class="box-title mb-15">Amount</h4>
+              <div class="row bb-1 pb-15 mb-15">
+                <div class="col-12">
+                  <div class="buy-input-block-content row">
+                    <div class="buy-input-box col-md-5">
+                      <div class="form-group">
+                        <input id="buyamount" type="number" class="form-control" placeholder="899"
+                          formControlName="buyamount">
+                      </div>
+                      <div *ngIf="f.buyamount.invalid && (f.buyamount.dirty || f.buyamount.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="f.buyamount.errors?.required">Amount Required</div>
+                        <div *ngIf="f.buyamount.errors?.max">Amount cannot be greater than wallet amount</div>
+                        <div *ngIf="f.buyamount.errors?.min">Amount cannot be less than 50</div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-2 text-center">
+                      <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="buy-input-box col-md-5">
+                      <div class="form-group">
+                        <input type="number" value="10" class="form-control" placeholder="8" formControlName="buystock">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h4 class="box-title mb-15">Category</h4>
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <select class="form-select" formControlName="category" aria-label="category">
+                      <option [defaultSelected]=true value="community">Community investing</option>
+                      <option value="green">Green investing</option>
+                      <option value="ethical">Ethical investing</option>
+                      <option value="impact">Impact investing</option>
+                      <option value="mission">Mission-Related investing</option>
+                      <option value="responsible">Responsible investing</option>
+                      <option value="social">Socially Responsible investing</option>
+                      <option value="value">Values-Based investing</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <br>
+              <br>
+              <div class="row">
+                <div class="col-12">
+                  <button type="submit" [disabled] = "buyForm.invalid" class="waves-effect waves-light btn btn-success my-10 d-block w-100">Buy
+                    Stock</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="tab-pane" id="tabid2" aria-labelledby="sell-tab" role="tabpanel">
+            <form [formGroup]="sellForm" (ngSubmit)=sellFormSubmission(sellForm.value)>
+              <h4 class="box-title mb-15">{{stock.name}}&nbsp;&nbsp;<i class="fas fa-money-check-alt"></i></h4>
+              <div class="row bb-1 pb-15 mb-15">
+                <div class="col-xxxl-4 col-md-6 col-12">
+                  <div class="sel-coin-type-outer">
+                    <label for="pay-3" class="sel-coin-type">
+                      <span class="mb-5">Quantity: {{portfolio.quantity}}</span>
+                    </label>
+                    <p></p>
+                  </div>
+                </div>
+              </div>
+
+              <h4 class="box-title mb-15">Stock</h4>
+              <div class="row bb-1 pb-15 mb-15">
+                <div class="col-12">
+                  <div class="buy-input-block-content row">
+                    <div class="buy-input-box col-md-5">
+                      <div class="form-group">
+                        <input type="number" class="form-control" placeholder="8" formControlName="sellstock">
+                      </div>
+                      <div *ngIf="f1.sellstock.invalid && (f1.sellstock.dirty || f1.sellstock.touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="f1.sellstock.errors?.required">Stock Required</div>
+                        <div *ngIf="f1.sellstock.errors?.max">Stock quantity exceeds the available quantity</div>
+                        <div *ngIf="f1.sellstock.errors?.min">Stock cannot be less than 0</div>
+                      </div>
+                    </div>
+                    <div class="col-md-2 text-center">
+                      <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="buy-input-box col-md-5">
+                      <div class="form-group">
+                        <input type="number" class="form-control" placeholder="859" formControlName="sellamount">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <h4 class="box-title mb-15">Category</h4>
+              <div class="row">
+                <div class="col-12">
+                  <p>{{portfolio.portfolio_type}}</p>
+                  <br>
+                  <br>
+                  <button type="submit" [disabled] = sellForm.invalid class="waves-effect waves-light btn btn-danger my-10 d-block w-100">Sell
+                    Stock</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+  
+    border-color: black;
+  }
+  
+ .container{
+    margin-top: 10%;
+    margin-bottom: 50%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-bottom: 20%;
+ }
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 25%;
+  }

@@ -1,0 +1,259 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Freelancer - Start Bootstrap Theme</title>
+        
+        
+    </head> -->
+<app-header></app-header>
+<div class="row">
+    <div class="col-xl-2 col-12"></div>
+    <div class="box col-xl-10 col-12">
+        <div class="container-fluid">
+            <!-- Page Wrapper -->
+            <div id="page-top">
+
+                <!-- Masthead-->
+                <header class="masthead text-white text-center" style="background-color: #0E823F;">
+                    <div class="container d-flex align-items-center flex-column">
+                        <!-- Masthead Avatar Image-->
+                        <img class="masthead-avatar mb-5" src="assets/port_home/assets/img/avataaars.svg" alt="..." />
+                        <!-- Masthead Heading-->
+                        <h1 class="masthead-heading text-uppercase mb-0">Welcome</h1>
+                        <!-- Icon Divider-->
+                        <div class="divider-custom divider-light">
+                            <div class="divider-custom-line"></div>
+                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                            <div class="divider-custom-line"></div>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="row">
+                    <div class="col-6">
+                        <br><br>
+                        <div class=" box" style="display: block">
+                            <canvas baseChart
+                                    [data]="pieChartData"
+                                    [labels]="pieChartLabels"
+                                    [colors]="pieChartColors"
+                                    [options]="pieChartOptions"
+                                    [chartType]="pieChartType"
+                                    (chartClick)="chartClicked($event)"></canvas>
+                          </div>
+                    </div>
+                    <div class="col-6">
+                        <br><br>
+                        <div class="app-card app-card-stat shadow-sm h-20">
+                            <div class="app-card-body p-3 p-lg-4">
+                                <h4 class="stats-type mb-1" style="color: #0E823F;">Invested Value</h4>
+                                <div class="stats-figure">&#8377;{{total_investment}}</div>
+                                <div class="stats-meta text-success">
+                                    <!-- <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up" -->
+                                        <!-- fill="currentColor" xmlns="http://www.w3.org/2000/svg"> -->
+                                        <!-- <path fill-rule="evenodd"
+                                            d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+                                    </svg> -->
+                                </div>
+                            </div>
+                            <!--//app-card-body-->
+
+                            <a class="app-card-link-mask" href="#"></a>
+                        </div>
+                        <!--//app-card-->
+                        <br><br>
+                        <div class="app-card app-card-stat shadow-sm h-20 box">
+                            <div class="app-card-body p-3 p-lg-4">
+                                <h4 class="stats-type mb-1" style="color: #0E823F;">Current Value</h4>
+                                <div class="stats-figure">&#8377;{{current_price}}</div>
+                                <div class="stats-meta text-success">
+                                    <!-- <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+                                    </svg> {{percent}}% -->
+                                </div>
+                            </div>
+                            <!--//app-card-body-->
+
+                            <a class="app-card-link-mask" href="#"></a>
+                        </div>
+                        <!--//app-card-->
+
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Portfolio Section-->
+                    <section class="page-section portfolio" id="portfolio">
+
+                        <div class="container">
+                            <!-- Portfolio Section Heading-->
+                            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Portfolio
+                            </h2>
+                            <!-- Icon Divider-->
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+
+                            <!-- Portfolio Grid Items-->
+                            <div class="row justify-content-center">
+                                <!-- Portfolio Item 1-->
+                                <div class="col-md-6 col-lg-3 mb-5 " [routerLink]="['/portfolio','ethical']">
+                                    <div class="portfolio-item mx-aut" data-bs-toggle="modal"
+                                        data-bs-target="#portfolioModal1">
+                                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100 "
+                                            style="background-color: #0E823F;">
+                                            <div class="portfolio-item-caption-content text-center text-white"
+                                                style="background-color: #0E823F;">
+                                                <p class="h6 fw-light text-center text-white p-3">Ethical investing is
+                                                    the practice of selecting investments based on ethical or moral
+                                                    principles</p>
+                                            </div>
+                                        </div>
+                                        <img class="img-fluid" src="assets/port_home/assets/img/portfolio/ethical.jpg"
+                                            alt="..." />
+
+                                    </div>
+                                </div>
+
+                                <!-- Portfolio Item 2-->
+                                <div class="col-md-6 col-lg-3 mb-5" [routerLink]="['/portfolio','community']">
+                                    <div class="portfolio-item mx-auto" data-bs-toggle="modal"
+                                        data-bs-target="#portfolioModal2">
+                                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100"
+                                            style="background-color: #0E823F;">
+                                            <div class="portfolio-item-caption-content text-center text-white"
+                                                style="background-color: #0E823F;">
+                                                <p class="h6 fw-light text-center text-white p-3">Community investing
+                                                    channels public and private investment to low income and other
+                                                    underserved communities in order to provide capital</p>
+                                            </div>
+                                        </div>
+                                        <img class="img-fluid" src="assets/port_home/assets/img/portfolio/community.jpg"
+                                            alt="..." />
+                                    </div>
+                                </div>
+                                <!-- Portfolio Item 3-->
+                                <div class="col-md-6 col-lg-3 mb-5" [routerLink]="['/portfolio','value']">
+                                    <div class="portfolio-item mx-auto" data-bs-toggle="modal"
+                                        data-bs-target="#portfolioModal3">
+                                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100"
+                                            style="background-color: #0E823F;">
+                                            <div class="portfolio-item-caption-content text-center text-white"
+                                                style="background-color: #0E823F;">
+                                                <p class="h6 fw-light text-center text-white p-3">Value investing is an
+                                                    investment strategy that involves picking stocks that appear to be
+                                                    trading for less than their intrinsic or book value</p>
+                                            </div>
+
+                                        </div>
+                                        <img class="img-fluid" src="assets/port_home/assets/img/portfolio/value.jpg"
+                                            alt="..." />
+                                    </div>
+                                </div>
+                                <!-- Portfolio Item 4-->
+                                <div class="col-md-6 col-lg-3 mb-5 mb-lg-0" [routerLink]="['/portfolio','green']">
+                                    <div class="portfolio-item mx-auto" data-bs-toggle="modal"
+                                        data-bs-target="#portfolioModal4">
+                                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100"
+                                            style="background-color: #0E823F;">
+                                            <div class="portfolio-item-caption-content text-center text-white"
+                                                style="background-color: #0E823F;">
+                                                <p class="h6 fw-light text-center text-white p-3">Green investments are
+                                                    traditional investment vehicles in which the underlying business are
+                                                    somehow involved in operations aimed at improving the environment
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <img class="img-fluid" src="assets/port_home/assets/img/portfolio/green.jpg"
+                                            alt="..." />
+                                    </div>
+                                </div>
+                                <!-- Portfolio Item 5-->
+                                <div class="col-md-6 col-lg-3 mb-5 mb-md-0" [routerLink]="['/portfolio','impact']">
+                                    <div class="portfolio-item mx-auto" data-bs-toggle="modal"
+                                        data-bs-target="#portfolioModal5">
+                                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100"
+                                            style="background-color: #0E823F;">
+                                            <div class="portfolio-item-caption-content text-center text-white"
+                                                style="background-color: #0E823F;">
+                                                <p class="h6 fw-light text-center text-white p-3">Impact investing is a
+                                                    general investment strategy that seeks to generate financial returns
+                                                    while also creating a positive social or environmental impact</p>
+                                            </div>
+                                        </div>
+                                        <img class="img-fluid" src="assets/port_home/assets/img/portfolio/impact.jpg"
+                                            alt="..." />
+                                    </div>
+                                </div>
+                                <!-- Portfolio Item 6-->
+                                <div class="col-md-6 col-lg-3 mb-5" [routerLink]="['/portfolio','mission']">
+                                    <div class="portfolio-item mx-auto" data-bs-toggle="modal"
+                                        data-bs-target="#portfolioModal6">
+                                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100"
+                                            style="background-color: #0E823F;">
+                                            <div class="portfolio-item-caption-content text-center text-white"
+                                                style="background-color: #0E823F;">
+                                                <p class="h6 fw-light text-center text-white p-3">Mission Related
+                                                    Investment is any investment activity that furthers the investor’s
+                                                    organizational mission</p>
+                                            </div>
+                                        </div>
+                                        <img class="img-fluid" src="assets/port_home/assets/img/portfolio/mission.jpg"
+                                            alt="..." />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 mb-5" [routerLink]="['/portfolio','social']">
+                                    <div class="portfolio-item mx-auto" data-bs-toggle="modal"
+                                        data-bs-target="#portfolioModal1">
+                                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100"
+                                            style="background-color: #0E823F;">
+                                            <div class="portfolio-item-caption-content text-center text-white"
+                                                style="background-color: #0E823F;">
+                                                <p class="h6 fw-light text-center text-white p-3">Socially responsible
+                                                    investing is an investment that is considered socially responsible
+                                                    due to the nature of the business the company conducts</p>
+                                            </div>
+                                        </div>
+                                        <img class="img-fluid" src="assets/port_home/assets/img/portfolio/social.jpg"
+                                            alt="..." />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3 mb-5" [routerLink]="['/portfolio','responsible']">
+                                    <div class="portfolio-item mx-auto" data-bs-toggle="modal"
+                                        data-bs-target="#portfolioModal1">
+                                        <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100"
+                                            style="background-color: #0E823F;">
+                                            <div class="portfolio-item-caption-content text-center text-white"
+                                                style="background-color: #0E823F;">
+                                                <p class="h6 fw-light text-center text-white p-3">Responsible investment
+                                                    is an approach to investment that explicitly acknowledges the
+                                                    relevance to the investor of environmental, social and governance
+                                                    factors</p>
+                                            </div>
+                                        </div>
+                                        <img class="img-fluid"
+                                            src="assets/port_home/assets/img/portfolio/responsible.jpg" alt="..." />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <!-- Copyright Section-->
+
+                <!-- Portfolio Modals-->
+
+                <!-- Bootstrap core JS-->
+
+            </div>
+        </div>
+    </div>
+</div>

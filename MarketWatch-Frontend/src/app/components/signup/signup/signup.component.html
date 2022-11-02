@@ -1,0 +1,98 @@
+<div class="app app-signup p-0">        
+    <div class="row g-0 app-auth-wrapper">
+        <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
+            <div class="d-flex flex-column align-content-end">
+                <div class="app-auth-body mx-auto">    
+                    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img class="logo-icon me-2" src="https://www.vhv.rs/dpng/d/9-95006_green-money-bag-png-transparent-png.png" alt="logo"></a></div>
+                    <h2 class="auth-heading text-center mb-4">Sign up to Portal</h2>    
+                    <div *ngIf="error">
+                        <div class="w-150 alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Username already exists!<br/>Try using different Mail Id</strong>
+                            
+                        </div>
+                    </div>                
+    
+                    <div class="auth-form-container text-start mx-auto">
+                        <form class="auth-form auth-signup-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">         
+                            <div class="email mb-3 form-group">
+                                <label class="sr-only" for="fullname">Your Name</label>
+                                <input id="fullname" formControlName="fullname" type="text" class="form-control signup-name" placeholder="Full name" [ngClass]="{'is-invalid':submitted && f.fullname.errors}">
+                                <div *ngIf="submitted && f.fullname.errors" class="invalid-feedback">
+                                    <div *ngIf="f.fullname.errors.required">Full Name is required</div>
+                                </div>
+                            </div>
+                            <div class="email mb-3 form-group">
+                                <label class="sr-only" for="email">Your Email</label>
+                                <input id="email" formControlName="email" type="email" class="form-control signup-email" placeholder="Email" required="required"  [ngClass]="{'is-invalid':submitted && f.email.errors}">
+                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">Email is required</div>
+                                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                </div>
+                            </div>
+                            <div class="password mb-3 form-group">
+                                <label class="sr-only" for="password">Password</label>
+                                <input id="password" formControlName="password" type="password" class="form-control signup-password"  [ngClass]="{'is-invalid':submitted && f.password.errors}" placeholder="Create a password" required="required">
+                                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                    <div *ngIf="f.password.errors.required">Password is required</div>
+                                    <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                                </div>
+                            </div>
+                            <div class="password mb-3 form-group">
+                                <label class="sr-only" for="cpassword">Confirm Password</label>
+                                <input id="cpassword" formControlName="cpassword" type="password" class="form-control signup-password"  [ngClass]="{'is-invalid':submitted && f.cpassword.errors}" placeholder="Re-enter password" required="required">
+                                <div *ngIf="submitted && f.cpassword.errors" class="invalid-feedback">
+                                    <div *ngIf="f.cpassword.errors.required">Password is required</div>
+                                    <div *ngIf="f.cpassword.errors.misMatch">Passwords must match</div>
+                                </div>
+                            </div>
+                            <!-- <div class="extra mb-3">
+                                <div class="form-check">
+                                    <input class="form-control form-check-input" required="required"  [ngClass]="{'is-invalid':submitted && f.RememberPassword.errors}" type="checkbox" value="" id="RememberPassword" formControlName="RememberPassword">
+                                    <label class="form-check-label" for="RememberPassword">
+                                    I agree to Portal's <a href="#" class="app-link">Terms of Service</a> and <a href="#" class="app-link">Privacy Policy</a>.
+                                    </label>
+                                    <div *ngIf="submitted && f.RememberPassword.errors" class="invalid-feedback">
+                                        <div *ngIf="f.RememberPassword.errors.required">Password is required</div>
+                                    </div>
+                                </div>
+                            </div>  -->
+                            <!--//extra-->
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success w-100 theme-btn mx-auto">
+                                    <span *ngIf='loading'>
+                                        <span class='spinner-border spinner-border-sm mr-1'></span>
+                                    </span>
+                                    Sign Up</button>
+
+                            </div>
+                        </form><!--//auth-form-->
+                        
+                        <div class="auth-option text-center pt-5">Already have an account? <a class="text-link" [routerLink]="['../login']" >Log in</a></div>
+                    </div><!--//auth-form-container-->    
+                    
+                    
+                    
+                </div><!--//auth-body-->
+            
+                <footer class="app-auth-footer">
+                    <div class="container text-center py-3">
+                         <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+                   
+                    </div>
+                </footer><!--//app-auth-footer-->    
+            </div><!--//flex-column-->   
+        </div><!--//auth-main-col-->
+        <div class="col-12 col-md-5 col-lg-6 h-100 auth-background-col">
+            <div class="auth-background-holder">
+            </div>
+            <div class="auth-background-mask"></div>
+            <div class="auth-background-overlay p-3 p-lg-5">
+                <div class="d-flex flex-column align-content-end h-100">
+                    <div class="h-100"></div>
+                    
+                </div>
+            </div><!--//auth-background-overlay-->
+        </div><!--//auth-background-col-->
+    
+    </div><!--//row-->
